@@ -3,7 +3,7 @@ import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles(theme => ({
     header: {
-        margin: theme.spacing(4),
+        margin: theme.spacing(1),
         display: 'flex',
         justifyContent: 'center'
     },

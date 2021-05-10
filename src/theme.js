@@ -6,14 +6,13 @@ const theme = createMuiTheme({
     spacing: 6,
     typography: {
         fontFamily: 'Roboto, sans-serif',
-            button: {
-                minWidth: pxToRem(80)
-            },
+        button: {
+            minWidth: pxToRem(80)
+        },
     },
     palette: {
         primary: {
             main: '#4791db',
-
         },
     },
     backgroundColorTimerViewActive: '#fdfdf6',
@@ -49,12 +48,31 @@ const theme = createMuiTheme({
                 },
             },
         },
+        MuiContainer: {
+            root: {
+                height: '100vh',
+                marginTop: pxToRem(-80),
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }
+        },
+        MuiCard: {
+            root: {
+                '& > *': {
+                    margin: pxToRem(18),
+                },
+                maxWidth: pxToRem(600),
+                minWidth: pxToRem(320)
+            }
+        },
         MuiTypography: {
             body1: {
                 fontWeight: 650,
                 fontSize: pxToRem(18),
                 lineHeight: pxToRem(20),
             },
+
         },
     },
 });

@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Subject, interval, timer } from 'rxjs';
 import { first, scan, startWith, takeUntil, tap } from 'rxjs/operators';
 
-import { Box } from '@material-ui/core';
+import { Card, Container } from '@material-ui/core';
 
 import Header from './components/Header';
-import TimerContainer from './components/TimerContainer';
+import TimerScreen from './components/TimerScreen';
+import Controls from './components/Controls';
 
 const timerStopSource$ = new Subject();
 
@@ -59,17 +60,19 @@ const App = () => {
     };
 
     return (
-        <Box component="main" >
-            <Header />
-            <TimerContainer
-                timeInSeconds={sec}
-                isActive={isActive}
-                handleStart={handleStart}
-                handleStop={handleStop}
-                handleWait={handleWait}
-                handleReset={handleReset}
-            />
-        </Box >
+        <Container component="main" >
+            <Card >
+                <Header />
+                <TimerScreen timeInSeconds={sec} />
+                <Controls
+                    handleStart={handleStart}
+                    handleReset={handleReset}
+                    handleStop={handleStop}
+                    handleWait={handleWait}
+                    isActive={isActive}
+                />
+            </Card >
+        </Container >
     );
 };
 
