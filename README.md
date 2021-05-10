@@ -1,9 +1,20 @@
+# React-RxJs-Stopwatch App
+
+### [View the deployed App ](https://stoic-goodall-c9b81d.netlify.app/)
+
+Author: Vitalii Melnyk
+
+## Technology Stack
+
+- React with React Hooks
+- React styles & libraries: Material-UI
+- RxJs
 _____________________________________________________
-on React тестовое для начала )
+## on React тестовое для начала )
 
-Реализовать секундомер, который подсчитывает время в формате «HH: MM: SS»
+### Реализовать секундомер, который подсчитывает время в формате «HH: MM: SS»
 
-Секундомер должен иметь следующие кнопки:
+### Секундомер должен иметь следующие кнопки:
 
 * «Start / Stop» - запуск / остановка отсчета времени, останавливает и обнуляет значение таймера.
 

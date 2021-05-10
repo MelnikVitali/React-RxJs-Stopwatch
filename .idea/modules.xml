@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/stopwatch.iml" filepath="$PROJECT_DIR$/.idea/stopwatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/React-RxJs-Stopwatch.iml" filepath="$PROJECT_DIR$/.idea/React-RxJs-Stopwatch.iml" />
     </modules>
   </component>
 </project>
