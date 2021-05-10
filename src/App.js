@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import { Subject, interval } from 'rxjs';
 
-import { Card, Typography, Button } from '@material-ui/core';
-import TimerIcon from '@material-ui/icons/Timer';
+import { Subject, interval, timer } from 'rxjs';
+import { first, scan, startWith, takeUntil, tap } from 'rxjs/operators';
 
-import useStyles from './styles';
-import { scan, startWith, takeUntil, tap } from 'rxjs/operators';
+import { Box } from '@material-ui/core';
+
+import Header from './components/Header';
+import TimerContainer from './components/TimerContainer';
 
 const timerStopSource$ = new Subject();
 
 const App = () => {
-    const classes = useStyles();
-
     const initialSec = 0;
     const [sec, setSec] = useState(initialSec);
     const [isActive, setIsActive] = useState(false);
-
-    console.log('render');
 
     const startTimer = (isReset) => {
         interval(1000)
@@ -26,27 +23,16 @@ const App = () => {
                 tap((seconds) => setSec(seconds)),
                 takeUntil(timerStopSource$.asObservable()),
             )
-            .subscribe({
-                next: value => console.log(value),
-                error: () => {},
-                complete: () => {
-                    console.log('complete');
-                }
-            });
+            .subscribe();
     };
 
     const handleStart = () => {
-
-        console.log('start');
-
         setIsActive(true);
 
         startTimer();
     };
 
     const handleStop = () => {
-        console.log('stop');
-
         timerStopSource$.next(false);
 
         setIsActive(false);
@@ -54,66 +40,36 @@ const App = () => {
         setSec(initialSec);
     };
 
-    const handleReset = () => {
-        console.log('reset');
+    const handleWait = () => {
+        timer(300)
+            .pipe(
+                first(),
+                tap(() => {
+                    timerStopSource$.next(false);
+                    setIsActive(false);
+                })
+            )
+            .subscribe();
+    };
 
+    const handleReset = () => {
         timerStopSource$.next(false);
 
         startTimer(true);
     };
 
     return (
-        <section >
-            <header className={classes.header} >
-                < TimerIcon color="secondary" className={classes.avatar} />
-                <Typography component="h1" variant="h2" className={classes.title} >
-                    Stopwatch
-                </Typography >
-            </header >
-            <Card className={classes.card} >
-                <Typography className={classes.timer} >
-                    {new Date(sec * 1000).toISOString().substr(11, 8)}
-                </Typography >
-                <div className={classes.controls} >
-                    {isActive ?
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.btn}
-                            onClick={handleStop}
-                        >
-                            Stop
-                        </Button >
-                        :
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.btn}
-                            onClick={handleStart}
-                        >
-                            Start
-                        </Button >
-                    }
-
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        className={classes.btn}
-                        // onClick={handleWait}
-                    >
-                        Wait
-                    </Button >
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        className={classes.btn}
-                        onClick={handleReset}
-                    >
-                        Reset
-                    </Button >
-                </div >
-            </Card >
-        </section >
+        <Box component="main" >
+            <Header />
+            <TimerContainer
+                timeInSeconds={sec}
+                isActive={isActive}
+                handleStart={handleStart}
+                handleStop={handleStop}
+                handleWait={handleWait}
+                handleReset={handleReset}
+            />
+        </Box >
     );
 };
 

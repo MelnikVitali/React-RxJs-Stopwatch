@@ -1,6 +1,6 @@
 # React-RxJs-Stopwatch App
 
-### [View the deployed App ](https://stoic-goodall-c9b81d.netlify.app/)
+### [View the deployed App ](https://vigorous-noyce-4feb02.netlify.app/)
 
 Author: Vitalii Melnyk
 

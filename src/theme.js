@@ -5,7 +5,10 @@ import { pxToRem } from './utils/pxToRem';
 const theme = createMuiTheme({
     spacing: 6,
     typography: {
-        fontFamily: 'Roboto, sans-serif'
+        fontFamily: 'Roboto, sans-serif',
+            button: {
+                minWidth: pxToRem(80)
+            },
     },
     palette: {
         primary: {
@@ -19,7 +22,6 @@ const theme = createMuiTheme({
             '@global': {
                 'html': {
                     boxSizing: 'border-box',
-                    scrollBehavior: 'smooth',
                     width: '100%',
                     height: '100%'
                 },
@@ -54,37 +56,6 @@ const theme = createMuiTheme({
                 lineHeight: pxToRem(20),
             },
         },
-        MuiInputBase: {
-            adornedEnd: {
-                paddingRight: 0
-            }
-        },
-        MuiOutlinedInput: {
-            root: {
-                borderRadius: pxToRem(23)
-            }
-        },
-        MuiListItem: {
-            root: {
-                paddingRight: 0
-            }
-        },
-        MuiIconButton: {
-            root: {
-                padding: pxToRem(9),
-                margin: `${pxToRem(3)} 0`
-            }
-        },
-        MuiListItemIcon: {
-            root: {
-                minWidth: pxToRem(49)
-            }
-        },
-        MuiSvgIcon: {
-            root: {
-                fontSize: '1.7rem'
-            }
-        }
     },
 });
 

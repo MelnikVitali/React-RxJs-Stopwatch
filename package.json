@@ -1,7 +1,14 @@
 {
-  "name": "stopwatch",
+  "name": "react-rxjs-stopwatch",
+  "description": "stopwatch",
+  "author": "Vitalii Melnyk",
+  "license": "ISC",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MelnikVitali/React-RxJs-Stopwatch"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
