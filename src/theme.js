@@ -59,9 +59,7 @@ const theme = createMuiTheme({
         },
         MuiCard: {
             root: {
-                '& > *': {
-                    margin: pxToRem(18),
-                },
+                padding: `0 ${pxToRem(18)}`,
                 maxWidth: pxToRem(600),
                 minWidth: pxToRem(320)
             }
@@ -70,7 +68,6 @@ const theme = createMuiTheme({
             body1: {
                 fontWeight: 650,
                 fontSize: pxToRem(18),
-                lineHeight: pxToRem(20),
             },
 
         },
